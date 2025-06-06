@@ -141,7 +141,7 @@ def read_tag(
     return result
 
 
-
+'''
 # Endpoint pour retourner une liste de tags avec pagination et filtres facultatifs par utilisateur ou film
 @app.get(
     "/tags",
@@ -158,7 +158,7 @@ def list_tags(
     db: Session = Depends(get_db)
 ):
     return req.get_tags(db, skip=skip, limit=limit, movie_id=movie_id, user_id=user_id)
-
+'''
 
 # Endpoint pour retourner les identifiants IMDB et TMDB pour un film donné
 @app.get(
