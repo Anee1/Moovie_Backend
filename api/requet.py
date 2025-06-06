@@ -1,4 +1,5 @@
 """SQLAlchemy Query Functions for MovieLens API"""
+
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import joinedload
 from typing import Optional
