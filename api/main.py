@@ -53,7 +53,7 @@ async def get_film(filmId: int = Path(..., title="ID du film", description="Iden
       raise HTTPException(status_code=404,detail=f"Aucun film trouvé avec l'ID {filmId}")
    return film
 
-
+'''
 # Endpoint pour obtenir une liste des films (avec pagination et filtres facultatifs title, genre, skip, limit)
 @app.get(
     "/movies",
@@ -72,7 +72,7 @@ def list_movies(
 ):
     film = req.get_movies(db, skip=skip, limit=limit, title=title, genre=genre)
     return film
-
+'''
 
 # Endpoint pour obtenir une évaluation par utilisateur et film
 @app.get(
@@ -141,7 +141,7 @@ def read_tag(
     return result
 
 
-'''
+
 # Endpoint pour retourner une liste de tags avec pagination et filtres facultatifs par utilisateur ou film
 @app.get(
     "/tags",
@@ -158,7 +158,6 @@ def list_tags(
     db: Session = Depends(get_db)
 ):
     return req.get_tags(db, skip=skip, limit=limit, movie_id=movie_id, user_id=user_id)
-'''
 
 # Endpoint pour retourner les identifiants IMDB et TMDB pour un film donné
 @app.get(
