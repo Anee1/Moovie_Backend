@@ -4,17 +4,17 @@ from sqlalchemy.orm import relationship # permet des relations de clé étrangè
 
 from DataBase import Base
 
-
 class Movie(Base):
- 
- __tablename__ = "movie"
- movieId = Column(Integer, primary_key=True, index=True)
- title = Column(String, nullable=False)
- genres = Column(String)
+    __tablename__ = "movie"
 
- ratings = relationship("Rating", back_populates="movie")
- tags = relationship("Tag", back_populates="movie")
- link = relationship("Link", uselist=False, back_populates="movie")
+    movieId = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    genres = Column(String)
+
+    ratings = relationship("Rating", back_populates="movie", cascade="all, delete")
+    tags = relationship("Tag", back_populates="movie", cascade="all, delete")
+    link = relationship("Link", back_populates="movie", uselist=False, cascade="all, delete")
+
 
 class Rating(Base):
  __tablename__ = "ratings"

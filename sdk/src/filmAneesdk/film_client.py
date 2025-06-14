@@ -1,7 +1,7 @@
 import httpx
 from typing import Optional, List, Literal, Union
 
-from .schemas import  MovieDetailed, RatingSimple, TagSimple, LinkSimple, AnalyticsResponse #,MovieSimple,
+from .schemas import  MovieDetailed, RatingSimple, TagSimple, LinkSimple, AnalyticsResponse, MovieSimple
 from .film_config import MovieConfig
 
 import pandas as pd
@@ -112,7 +112,7 @@ class MovieClient:
     
 
     
-        """"
+    
     def list_movies(
         self,
         skip: int = 0,
@@ -130,5 +130,3 @@ class MovieClient:
         response = httpx.get(url, params=params)
         response.raise_for_status()
         return self._format_output(response.json(), MovieSimple, output_format)
-    """
-    

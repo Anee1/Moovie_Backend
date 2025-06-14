@@ -5,9 +5,39 @@ from DataBase import SessionLocal
 import requet as req
 import shema
 
+description = description = """
+### 🎬 **Bienvenue dans l'API Film**
+
+Cette API vous permet d'interagir avec la base de données **MovieLens** inspirée du célèbre jeu de données [MovieLens](https://grouplens.org/datasets/movielens/) , une base riche en informations sur les **films**, les **utilisateurs** et leurs **évaluations**.  
+Elle expose plusieurs *endpoints REST* permettant de **consulter, filtrer et analyser** les films, évaluations, tags et autres métadonnées.
+
+---
+
+### 🔧 Fonctionnalités principales :
+-  Obtenez les détails d’un film à partir de son ID  
+-  Recherchez une liste de films avec filtres par titre ou genre  
+-  Consultez la note attribuée par un utilisateur à un film spécifique  
+-  Filtrez les tags par film ou utilisateur  
+-  Explorez les genres, tendances de notation et autres statistiques  
+
+---
+
+### 🧠 Utilisation typique :
+-  Développeurs souhaitant intégrer des données cinématographiques dans leurs applications  
+-  Data analysts explorant les préférences de visionnage  
+-  Chercheurs en machine learning travaillant sur des systèmes de recommandation
+
+---
+### Bon à savoir
+- Vous pouvez tester tous les endpoints directement via l'interface Swagger "/docs".
+- Pour toute erreur (ex : ID inexistant), une réponse claire est retournée avec le bon code HTTP.
+"""
+
+
+
 app = FastAPI(
     title="Film",
-    description="Bienvenue dans l'API Film",
+    description= description ,
     version= '0.1')
 
 # --- Dépendance pour la session de la base de donnée ---#
@@ -30,7 +60,7 @@ opérationnelle.
  """,
  response_description="Un message de confirmation si l'API fonctionne correctement.",
  operation_id="health_check_movies_api",
- tags=["monitoring"],
+ tags=["Verification"],
 )
 async def root():
  return {"message": "API MovieLens opérationnelle"}
@@ -53,14 +83,14 @@ async def get_film(filmId: int = Path(..., title="ID du film", description="Iden
       raise HTTPException(status_code=404,detail=f"Aucun film trouvé avec l'ID {filmId}")
    return film
 
-'''
+
 # Endpoint pour obtenir une liste des films (avec pagination et filtres facultatifs title, genre, skip, limit)
 @app.get(
-    "/movies",
+    "/films",
     summary="Lister les films",
     description="Retourne une liste de films avec pagination et filtres optionnels par titre ou genre.",
     response_description="Liste de films",
-    response_model=List[shema.LinkSimple],
+    response_model=List[shema.MovieSimple],
     tags=["films"],
 )
 def list_movies(
@@ -72,7 +102,7 @@ def list_movies(
 ):
     film = req.get_movies(db, skip=skip, limit=limit, title=title, genre=genre)
     return film
-'''
+
 
 # Endpoint pour obtenir une évaluation par utilisateur et film
 @app.get(
