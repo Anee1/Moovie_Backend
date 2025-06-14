@@ -110,9 +110,6 @@ class MovieClient:
         response.raise_for_status()
         return AnalyticsResponse(**response.json())
     
-
-    
-    
     def list_movies(
         self,
         skip: int = 0,
