@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "filmAneesdk"
-version = "0.0.6"
+version = "0.0.7"
 readme = "README.md"
 authors = [
-  { name="[Anée Marcel]" },
+  { name="[Anée Marcel]", email = "aneemarcele@gmail.com"},
 ]
 description = "SDK Python pour accéder à l’API Film (Data Analysts/Data Scientists friendly)"
 requires-python = ">=3.12"

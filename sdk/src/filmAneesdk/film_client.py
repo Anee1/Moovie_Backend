@@ -118,7 +118,7 @@ class MovieClient:
         genre: Optional[str] = None,
         output_format: Literal["pydantic", "dict", "pandas"] = "pydantic"
     ) -> Union[List[MovieSimple], List[dict], "pd.DataFrame"]:
-        url = f"{self.movie_base_url}/movies"
+        url = f"{self.movie_base_url}/films"
         params = {"skip": skip, "limit": limit}
         if title:
             params["title"] = title
