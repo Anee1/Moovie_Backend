@@ -35,6 +35,24 @@ class MovieClient:
         response.raise_for_status()
         return MovieDetailed(**response.json())
     
+    def list_movies(
+        self,
+        skip: int = 0,
+        limit: int = 100,
+        title: Optional[str] = None,
+        genre: Optional[str] = None,
+        output_format: Literal["pydantic", "dict", "pandas"] = "pydantic"
+    ) -> Union[List[MovieSimple], List[dict], "pd.DataFrame"]:
+        url = f"{self.movie_base_url}/films"
+        params = {"skip": skip, "limit": limit}
+        if title:
+            params["title"] = title
+        if genre:
+            params["genre"] = genre
+        response = httpx.get(url, params=params)
+        response.raise_for_status()
+        return self._format_output(response.json(), MovieSimple, output_format)
+    
     def get_rating(self, user_id: int, movie_id: int) -> RatingSimple:
         url = f"{self.movie_base_url}/ratings/{user_id}/{movie_id}"
         response = httpx.get(url)
@@ -110,20 +128,4 @@ class MovieClient:
         response.raise_for_status()
         return AnalyticsResponse(**response.json())
     
-    def list_movies(
-        self,
-        skip: int = 0,
-        limit: int = 100,
-        title: Optional[str] = None,
-        genre: Optional[str] = None,
-        output_format: Literal["pydantic", "dict", "pandas"] = "pydantic"
-    ) -> Union[List[MovieSimple], List[dict], "pd.DataFrame"]:
-        url = f"{self.movie_base_url}/films"
-        params = {"skip": skip, "limit": limit}
-        if title:
-            params["title"] = title
-        if genre:
-            params["genre"] = genre
-        response = httpx.get(url, params=params)
-        response.raise_for_status()
-        return self._format_output(response.json(), MovieSimple, output_format)
+   
