@@ -46,8 +46,8 @@ http://localhost:8000/docs
 | Méthode | URL                                 | Description |
 |--------|--------------------------------------|-------------|
 | GET    | `/`                                  | Vérifie le bon fonctionnement de l’API |
-| GET    | `/movies`                            | Liste paginée des films avec filtres |
-| GET    | `/movies/{movie_id}`                 | Détail d’un film |
+| GET    | `/films`                            | Liste paginée des films avec filtres |
+| GET    | `/film/{movie_id}`                 | Détail d’un film |
 | GET    | `/ratings`                           | Liste paginée des évaluations |
 | GET    | `/ratings/{user_id}/{movie_id}`      | Évaluation d’un film par un utilisateur |
 | GET    | `/tags`                              | Liste des tags |
@@ -65,7 +65,7 @@ http://localhost:8000/docs
 ```python
 import httpx
 
-response = httpx.get("http://localhost:8000/movies", params={"limit": 5})
+response = httpx.get("http://localhost:8000/films", params={"limit": 5})
 print(response.json())
 ```
 
@@ -73,7 +73,7 @@ print(response.json())
 
 ```python
 movie_id = 1
-response = httpx.get(f"http://localhost:8000/movies/{movie_id}")
+response = httpx.get(f"http://localhost:8000/film/{movie_id}")
 print(response.json())
 ```
 
@@ -102,7 +102,7 @@ print(response.json())
 
 ## Conditions d'utilisation
 
-- Cette API est conçue à des fins pédagogiques et expérimentales.
+- Cette API est conçue à des fins expérimentales.
 - Merci de ne pas effectuer d'appels massifs sans contrôle de fréquence (rate-limiting non implémenté pour l’instant).
 - Vous pouvez l’intégrer à des notebooks, applications ou projets de dataviz pour visualiser les données de MovieLens.
 
@@ -128,14 +128,13 @@ Les contributions sont les bienvenues !
 ---
 
 ## Software Development Kit (SDK)
-
-*A venir*
+[filmAneesdk](https://pypi.org/project/filmAneesdk/)
 
 ---
 
 ## URL publique (Cloud) de l'API
 
-*A venir*
+[API film sur render](https://moovie-backend-1.onrender.com/)
 
 ## Auteur
 

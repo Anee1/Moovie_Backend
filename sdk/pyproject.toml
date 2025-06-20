@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "filmAneesdk"
-version = "0.0.7"
+version = "0.0.9"
 readme = "README.md"
 authors = [
   { name="[Anée Marcel]", email = "aneemarcele@gmail.com"},

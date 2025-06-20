@@ -93,7 +93,7 @@ async def get_film(filmId: int = Path(..., title="ID du film", description="Iden
     response_model=List[shema.MovieSimple],
     tags=["films"],
 )
-def list_movies(
+async def list_movies(
     skip: int = Query(0, ge=0, description="Nombre de résultats à ignorer"),
     limit: int = Query(100, le=1000, description="Nombre maximal de résultats à retourner"),
     title: str = Query(None, description="Filtre par titre"),

@@ -18,7 +18,7 @@ print(movie)
 print(type(movie))
 #%%
 # 3. Lister les films (premiers 5)
-"""""
+
 print("\n List of movies:")
 movies = client.list_movies(limit=5)
 print(type(movies))
@@ -26,7 +26,7 @@ print(type(movies))
 for m in movies:
  print(m)
  print(type(m))
- """
+ 
 #%%
 # 4. Récupérer un rating spécifique
 print("\n Rating for user 1 and movie 1:")
